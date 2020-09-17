@@ -1,0 +1,10 @@
+@import "./assets/style/reset.scss";
+@import "./assets/style/layout.scss";
+@import "./assets/style/login.scss";
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
