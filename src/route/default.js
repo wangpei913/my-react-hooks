@@ -1,13 +1,15 @@
-import Login from "../page/login";
+import Loadable from "react-loadable";
+import Loading from "../components/loading";
+
+const Login = Loadable({
+  loader: () => import("../page/login"),
+  loading: Loading,
+});
 
 const defaultRoute = [
   {
-    title: "登录",
     path: "/login",
     component: Login,
-    requiresAuth: false,
-    key: "0",
-    icon: "",
   },
 ];
 export default defaultRoute;
