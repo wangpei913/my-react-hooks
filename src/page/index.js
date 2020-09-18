@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
-import renderRoutes from "../route/index";
+import renderRoutes from "../route";
 
 import SideMenu from "../components/sideMenu";
 import Header from "../components/header";

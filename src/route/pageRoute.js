@@ -1,9 +1,7 @@
-// import React from "react";
-// import { Redirect } from "react-router-dom";
 import Loadable from "react-loadable";
 import Loading from "../components/loading";
 
-const AllComponent = Loadable({
+const IndexPage = Loadable({
   loader: () => import("../page"),
   loading: Loading,
 });
@@ -14,8 +12,6 @@ const Home = Loadable({
 const Kind = Loadable({
   loader: () => import("../page/kind"),
   loading: Loading,
-  delay: 30000,
-  timeout: 10000,
 });
 const Analysis = Loadable({
   loader: () => import("../page/analysis"),
@@ -24,34 +20,62 @@ const Analysis = Loadable({
 const Monitor = Loadable({
   loader: () => import("../page/monitor"),
   loading: Loading,
-  delay: 300,
-  timeout: 10000,
+});
+const NotFound = Loadable({
+  loader: () => import("../page/notFound"),
+  loading: Loading,
+});
+const Login = Loadable({
+  loader: () => import("../page/login"),
+  loading: Loading,
 });
 
-const RouteConfig = [
+const PageRoute = [
+  {
+    path: "/404",
+    component: NotFound,
+    requiresAuth: false,
+    routes: [],
+    title: "404",
+  },
+  {
+    path: "/login",
+    title: "登录页",
+    component: Login,
+    requiresAuth: false,
+    routes: [],
+  },
   {
     path: "/",
-    component: AllComponent,
+    title: "首页",
+    component: IndexPage,
+    requiresAuth: false,
     routes: [
-      // {
-      //   path: "/",
-      //   exact: true,
-      //   render: () => <Redirect to={"/home"} />,
-      // },
+      {
+        exact: true,
+        from: "/",
+        to: "/home",
+      },
+      {
+        path: "/404",
+        redirect: "/404",
+      },
       {
         path: "/home",
         component: Home,
         title: "首页",
         key: "1",
-        icon: "DashboardOutlined",
         requiresAuth: false,
-        exact: true,
         routes: [
-          // {
-          //   path: "/home",
-          //   exact: true,
-          //   render: () => <Redirect to={"/home/analysis"} />,
-          // },
+          {
+            exact: true,
+            from: "/home",
+            to: "/home/analysis",
+          },
+          {
+            path: "/404",
+            redirect: "/404",
+          },
           {
             title: "分析页",
             path: "/home/analysis",
@@ -75,10 +99,9 @@ const RouteConfig = [
         component: Kind,
         requiresAuth: true,
         key: "2",
-        icon: "ProfileOutlined",
         routes: [],
       },
     ],
   },
 ];
-export default RouteConfig;
+export default PageRoute;
