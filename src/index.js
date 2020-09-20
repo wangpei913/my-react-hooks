@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "mobx-react";
 import store from "./store/index";
 
-import "./index.scss";
 import App from "./App";
+import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(

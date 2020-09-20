@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 
 import NotSrc from "../assets/image/not.png";
+import Calendar from "../components/calendar";
 
 const { TabPane } = Tabs;
 const layout = {
@@ -104,7 +105,9 @@ function Login(props) {
             </TabPane>
           </Tabs>
         </aside>
-        <aside>right</aside>
+        <aside>
+          <Calendar />
+        </aside>
       </main>
     </div>
   );
