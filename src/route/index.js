@@ -51,6 +51,7 @@ const renderRoutes = (
                   ) {
                     return (
                       <route.component
+                        beforeEnter={route.beforeEnter}
                         {...props}
                         {...extraProps}
                         route={route}
@@ -66,6 +67,7 @@ const renderRoutes = (
                     />
                   );
                 }}
+                onEnter={() => console.log("wolaile")}
               />
             );
           })

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs, Form, Input, Button, Checkbox, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
+
+
+import { get } from '../request'
+import '../mock/prompt'
 
 import NotSrc from "../assets/image/not.png";
 import Calendar from "../components/calendar";
@@ -32,9 +36,26 @@ function Login(props) {
       message.warning("请输入 用户名: admin & 密码: hello~admin");
     }
   };
+  // 随机数据
+  const randomData = (arr) => {
+    if (!arr) return
+    let count = arr.length - 1;
+    let random = Math.ceil(Math.random() * count);
+    console.log(random, 'ooo')
+    return arr[random]
+  }
+  // ajax请求
+  const [title, setTitle] = useState('相信美好的事情即将发生');
+  useEffect(() => {
+    get('/prompt').then(({code, data}) => {
+      if (code === 200) {
+        setTitle(randomData(data))
+      }
+    })
+  }, [])
   return (
     <div className="login-page">
-      <nav className="page-nav">相信美好的事情即将发生</nav>
+      <nav className="page-nav">{title}</nav>
       <main className="page-main">
         <aside>
           <Tabs defaultActiveKey="1" size="small">
@@ -105,10 +126,8 @@ function Login(props) {
             </TabPane>
           </Tabs>
         </aside>
-        <aside>
-          <Calendar />
-        </aside>
       </main>
+      <aside className="date-aside"><Calendar /></aside>
     </div>
   );
 }

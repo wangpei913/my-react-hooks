@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Progress from "./progress";
-import Mark from "./mark";
+// import Progress from "./progress";
+// import Mark from "./mark";
 
 const callFakeAPI = (delay) => {
   return new Promise((resolve) => {
@@ -19,11 +19,11 @@ const MyContainer = (WraooedComponent) => {
       }));
     }
     render() {
-      const { isLoading } = this.state;
+      // const { isLoading } = this.state;
       return (
         <React.Fragment>
-          <Mark isAnimating={isLoading} />
-          <Progress isAnimating={isLoading} />
+          {/* <Mark isAnimating={isLoading} />
+          <Progress isAnimating={isLoading} /> */}
           <WraooedComponent {...this.props} />
         </React.Fragment>
       );

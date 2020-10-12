@@ -3,7 +3,7 @@ import { observable, action } from "mobx";
 class LoginStore {
   @observable
   authed = window.sessionStorage.getItem("authed") || false;
-  username = window.sessionStorage.getItem("user") || "张三丰";
+  username = window.sessionStorage.getItem("user") || "未登录";
   @action
   changeAuthed = ({ authed, username }) => {
     window.sessionStorage.setItem("authed", authed);

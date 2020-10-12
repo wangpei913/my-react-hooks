@@ -14,7 +14,6 @@ function AllComponents(props) {
     route: { routes },
   } = props;
   const authPath = "/login";
-
   const scrollEle = useRef(null);
   const [isScroll, setScroll] = useState(false);
   useEffect(() => {
@@ -27,7 +26,7 @@ function AllComponents(props) {
     };
     scrollEle.current.addEventListener("scroll", _.throttle(handleScroll, 300));
     return () => {
-      scrollEle.current.removeEventListener("scroll", handleScroll);
+      // scrollEle.current.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
