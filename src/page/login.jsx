@@ -8,18 +8,9 @@ import { inject, observer } from "mobx-react";
 import { get } from '../request'
 import '../mock/prompt'
 
-import NotSrc from "../assets/image/not.png";
 import Calendar from "../components/calendar";
 
 const { TabPane } = Tabs;
-const layout = {
-  labelCol: {
-    span: 0,
-  },
-  wrapperCol: {
-    span: 24,
-  },
-};
 const tailLayout = {
   wrapperCol: {
     offset: 0,
@@ -55,13 +46,12 @@ function Login(props) {
   }, [])
   return (
     <div className="login-page">
-      <nav className="page-nav">{title}</nav>
-      <main className="page-main">
-        <aside>
-          <Tabs defaultActiveKey="1" size="small">
+      <aside className="left-aside">
+        <nav className="left-nav-up">{title}</nav>
+        <nav className="left-nav-down">
+          <Tabs defaultActiveKey="1" size="small" className="tabs">
             <TabPane tab="账户密码登录" key="1">
               <Form
-                {...layout}
                 name="basic"
                 style={{ padding: "0 5px" }}
                 initialValues={{
@@ -121,13 +111,12 @@ function Login(props) {
                 </Form.Item>
               </Form>
             </TabPane>
-            <TabPane tab="手机号登录" key="2">
-              <img src={NotSrc} alt="not" />
-            </TabPane>
           </Tabs>
-        </aside>
-      </main>
-      <aside className="date-aside"><Calendar /></aside>
+        </nav>
+      </aside>
+      <aside className="right-aside">
+        <Calendar />
+      </aside>
     </div>
   );
 }

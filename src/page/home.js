@@ -9,6 +9,7 @@ function Home(props) {
   } = props;
   const authPath = "/login";
   const authed = false;
-  return <div>{renderRoutes(routes, authed, authPath)}</div>;
+  // {renderRoutes(routes, authed, authPath)}
+  return <div>我是首页</div>;
 }
 export default memo(withRouter(Home));
