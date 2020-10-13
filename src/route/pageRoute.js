@@ -99,7 +99,6 @@ const PageRoute = [
         component: Kind,
         requiresAuth: true,
         key: "2",
-        routes: [],
       },
     ],
   },
