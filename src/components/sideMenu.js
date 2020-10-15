@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Menu } from "antd";
 import { DashboardOutlined, ProfileOutlined } from "@ant-design/icons";
+import { getMenu } from '../api';
 
-import RouteConfig from "../route/router";
 const { SubMenu } = Menu;
 
 function SideMenu(props) {
   const {
     globalHeaderStore: { collapsed },
-    location: { pathname },
+    // location: { pathname },
+    globalTheme: { themeType }
   } = props;
-  let routerDatepath = RouteConfig[0].routes.filter(
-    (item) => item.path !== "/"
-  );
+  // let routerDatepath = RouteConfig[0].routes.filter(
+  //   (item) => item.path !== "/"
+  // );
   const renderIcon = (item) => {
     let com = null;
     switch (item) {
@@ -38,15 +39,14 @@ function SideMenu(props) {
             key={item.key}
             icon={renderIcon(item.icon)}
           >
-            {renderMenu(item.routes.filter((v) => v.component))}
+            {renderMenu(item.routes)}
           </SubMenu>
         );
       }
       return (
         <Menu.Item
           key={item.key}
-          icon={renderIcon(item.icon)}
-          className={pathname === item.path ? "ant-menu-item-selected" : ""}
+          icon={<span className="anticon"><i className="iconfont" style={{ fontSize: 20, margin: '0 5px' }}>{item.icon}</i></span>}
         >
           <NavLink key={item.title} to={item.path}>
             {item.title}
@@ -55,16 +55,26 @@ function SideMenu(props) {
       );
     });
   };
+
+  const [menu, setMenu] = useState([])
+
+  useEffect(() => {
+    getMenu().then(res => {
+      setMenu(res.data)
+    })
+  }, [])
+
   return (
     <Menu
       mode="inline"
-      theme="light"
-      defaultOpenKeys={[routerDatepath[0].key]}
+      theme={themeType}
+      defaultSelectedKeys={['0']}
+      defaultOpenKeys={['0']}
       inlineCollapsed={collapsed}
       style={{ width: collapsed ? "80px" : "200px" }}
     >
-      {renderMenu(routerDatepath)}
+      {renderMenu(menu)}
     </Menu>
   );
 }
-export default inject("globalHeaderStore")(withRouter(observer(SideMenu)));
+export default inject("globalHeaderStore", "globalTheme")(withRouter(observer(SideMenu)));

@@ -16,7 +16,9 @@ const UserModules = (props) => {
         logout();
         history.push("/login");
         break;
-
+      case "center":
+        history.push('/center');
+        break;
       default:
         break;
     }

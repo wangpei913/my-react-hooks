@@ -1,0 +1,12 @@
+@import "../../theme/theme.scss";
+
+.button {
+  padding: 4px 20px;
+  border-radius: 4px;
+  outline: none;
+  @include themify($themes) {
+    background-color: themed("backgroundColor");
+  }
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+}

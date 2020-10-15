@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import { message } from 'antd'
 const renderRoutes = (
   routes,
   authed = false,
@@ -58,8 +59,9 @@ const renderRoutes = (
                       />
                     );
                   }
+                  message.error('你还没登录!')
                   return (
-                    <Redirect
+                    < Redirect
                       to={{
                         pathname: authPath,
                         state: { from: props.location },
@@ -67,7 +69,6 @@ const renderRoutes = (
                     />
                   );
                 }}
-                onEnter={() => console.log("wolaile")}
               />
             );
           })

@@ -5,10 +5,10 @@ import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 
 
-import { get } from '../request'
-import '../mock/prompt'
+import { get } from '../../request'
+import '../../mock/prompt'
 
-import Calendar from "../components/calendar";
+import Calendar from "../../components/calendar";
 
 const { TabPane } = Tabs;
 const tailLayout = {
@@ -22,7 +22,7 @@ function Login(props) {
     const { username, password } = values;
     if (username === "admin" && password === "hello~admin") {
       props.globalLogin.changeAuthed({ authed: true, username: username });
-      props.history.push("/home");
+      props.history.push("/");
     } else {
       message.warning("请输入 用户名: admin & 密码: hello~admin");
     }
@@ -32,13 +32,12 @@ function Login(props) {
     if (!arr) return
     let count = arr.length - 1;
     let random = Math.ceil(Math.random() * count);
-    console.log(random, 'ooo')
     return arr[random]
   }
   // ajax请求
   const [title, setTitle] = useState('相信美好的事情即将发生');
   useEffect(() => {
-    get('/prompt').then(({code, data}) => {
+    get('/prompt').then(({ code, data }) => {
       if (code === 200) {
         setTitle(randomData(data))
       }
