@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 
-function NewDate () {
+function NewDate() {
     // 当前日期
     const date = new Date();
     // 当前年
@@ -10,8 +10,8 @@ function NewDate () {
     // 创建日期的集合
     let dayList = []
     // 通过月份得出当前月有多少天
-    const monthDay = (year,month) => {
-        return new Date(year,month,0).getDate()
+    const monthDay = (year, month) => {
+        return new Date(year, month, 0).getDate()
     }
     let Days = monthDay(year, month)
     // 获取第一天和最后一天的星期
@@ -27,14 +27,14 @@ function NewDate () {
     const insertEle = (num, type) => {
         let data = []
         for (let i = 0; i < num; i++) {
-           type === 'push' ? data.push({key: `empty${i}`, value: ''}) : data.unshift({key: `empty${i}`, value: ''})
+            type === 'push' ? data.push({ key: `empty${i}`, value: '' }) : data.unshift({ key: `empty${i}`, value: '' })
         }
         return data
     }
     dayList = [...insertEle(firstDay, 'unshift'), ...dayList]
     // 创建当月的天数dom
     for (let i = 1; i < Days + 1; i++) {
-        dayList.push({key: `value${i}`, value: i})
+        dayList.push({ key: `value${i}`, value: i })
     }
     // 当前active的日期
     let activeDay = date.getDate();
@@ -48,6 +48,7 @@ function NewDate () {
 
     return (
         <div className="date-box">
+            <header className="current">{`${year}年${month > 9 ? month : '0' + month}月`}</header>
             <ul className="weeks-day">
                 <li>一</li>
                 <li>二</li>

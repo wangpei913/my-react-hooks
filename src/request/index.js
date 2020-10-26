@@ -23,7 +23,7 @@ let httpCode = {        //这里我简单列出一些常见的http状态码信�
 /** 添加请求拦截器 **/
 instance.interceptors.request.use(config => {
     // config.headers['token'] = sessionStorage.getItem('token') || ''
-    hide = message.loading({content: 'Loading...', duration: 0});
+    hide = message.loading({ content: 'Loading...', duration: 0 });
     // 在这里：可以根据业务需求可以在发送请求之前做些什么:例如我这个是导出文件的接口，因为返回的是二进制流，所以需要设置请求响应类型为blob，就可以在此处设置。
     if (config.url.includes('pur/contract/export')) {
         config.headers['responseType'] = 'blob'
@@ -34,6 +34,7 @@ instance.interceptors.request.use(config => {
     }
     return config
 }, error => {
+    hide()
     // 对请求错误做些什么
     return Promise.reject(error)
 })

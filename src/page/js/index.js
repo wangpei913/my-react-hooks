@@ -1,6 +1,9 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import renderRoutes from '../../route'
 
-function JavaScript() {
-    return <div>JavaScript</div>
+function JavaScript(props) {
+    const { route: { routes } } = props
+    return <div className='full-size'>{renderRoutes(routes)}</div>
 }
-export default JavaScript;
+export default (withRouter(JavaScript));

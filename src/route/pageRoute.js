@@ -9,6 +9,10 @@ const JavaScrypt = Loadable({
   loader: () => import("../page/js"),
   loading: Loading,
 })
+const DataType = Loadable({
+  loader: () => import("../page/DataType"),
+  loading: Loading,
+})
 const CSS = Loadable({
   loader: () => import("../page/css"),
   loading: Loading,
@@ -92,6 +96,24 @@ const PageRoute = [
         component: JavaScrypt,
         requiresAuth: false,
         key: "0",
+        routes: [
+          {
+            exact: true,
+            from: "/javascript",
+            to: "/javascript/datatype",
+          },
+          {
+            path: "/404",
+            redirect: "/404",
+          },
+          {
+            title: "DataType",
+            path: "/javascript/datatype",
+            component: DataType,
+            requiresAuth: false,
+            key: "0-1",
+          }
+        ]
       },
       {
         title: "CSS",

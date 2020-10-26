@@ -9,7 +9,14 @@ Mock.mock('/menu', {
             "path": "/javascript",
             "key": "0",
             "icon": "\ue60e",
-            "routes": [],
+            "routes": [
+                {
+                    "title": "数据类型",
+                    "path": "/javascript/datatype",
+                    "key": "0-1",
+                    "icon": ''
+                }
+            ],
         },
         {
             "title": "CSS",

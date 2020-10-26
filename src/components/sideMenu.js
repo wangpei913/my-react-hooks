@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Menu } from "antd";
-import { DashboardOutlined, ProfileOutlined } from "@ant-design/icons";
 import { getMenu } from '../api';
 
 const { SubMenu } = Menu;
@@ -16,20 +15,6 @@ function SideMenu(props) {
   // let routerDatepath = RouteConfig[0].routes.filter(
   //   (item) => item.path !== "/"
   // );
-  const renderIcon = (item) => {
-    let com = null;
-    switch (item) {
-      case "DashboardOutlined":
-        com = <DashboardOutlined />;
-        break;
-      case "ProfileOutlined":
-        com = <ProfileOutlined />;
-        break;
-      default:
-        break;
-    }
-    return com;
-  };
   const renderMenu = (data) => {
     return data.map((item) => {
       if (item.routes && item.routes.length > 0) {
@@ -37,7 +22,7 @@ function SideMenu(props) {
           <SubMenu
             title={item.title}
             key={item.key}
-            icon={renderIcon(item.icon)}
+            icon={<span className="anticon"><i className="iconfont" style={{ fontSize: 20, margin: '0 5px' }}>{item.icon}</i></span>}
           >
             {renderMenu(item.routes)}
           </SubMenu>
@@ -68,8 +53,8 @@ function SideMenu(props) {
     <Menu
       mode="inline"
       theme={themeType}
-      defaultSelectedKeys={['0']}
-      defaultOpenKeys={['0']}
+      defaultSelectedKeys={['0', '0-1']}
+      defaultOpenKeys={['0', '0-1']}
       inlineCollapsed={collapsed}
       style={{ width: collapsed ? "80px" : "200px" }}
     >

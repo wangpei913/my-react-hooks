@@ -5,6 +5,8 @@
 @import "./assets/style/login.scss";
 @import "./assets/style/drag.scss";
 @import "./assets//style/center.scss";
+@import "./assets/style/datatype.scss";
+@import "./assets/style/anchor.scss";
 
 html,
 body,
@@ -53,3 +55,9 @@ body,
   scrollbar-base-color: #f4f4f5;
 }
 /*IE--------------------------------------------end*/
+
+// 需要宽高百分百的类名
+.full-size{
+  width: 100%;
+  height: 100%;
+}
