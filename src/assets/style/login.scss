@@ -12,25 +12,26 @@
     .left-aside {
       display: flex;
       flex: 1;
-      flex-direction: column;
       padding: 10px;
-      .left-nav-up {
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex-wrap: wrap;
-        font-size: 16px;
-        font-weight: 500;
-      }
       .left-nav-down {
         display: flex;
         flex: 4;
+        flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        .text{
+          display: inline-block;
+          width: 100%;
+          padding: 0 5px;
+          color: #d9d9d9;
+          background-color: rgba(0, 0, 0, 0.1);
+          font-size: 10px;
+          >i{
+            padding-right: 5px;
+          }
+        }
         .tabs {
-          width: 90%;
+          width: 100%;
           background-color: rgba(0, 0, 0, 0.1);
           padding: 0 5px;
           img {
@@ -48,29 +49,30 @@
     .left-aside {
       display: flex;
       flex: 3;
-      flex-direction: column;
-      .left-nav-up {
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        text-align: center;
-        font-size: 24px;
-        font-weight: 500;
-
-        margin-left: 250px;
-      }
+      align-items: center;
+      justify-content: center;
       .left-nav-down {
         display: flex;
-        flex: 3;
+        flex: 1;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
+        .text{
+          display: inline-block;
+          width: 40%;
+          padding: 0 5px;
+          color: #969696;
+          background-color: #fff;
+          margin-left: 265px;
+          >i{
+            padding-right: 5px;
+          }
+        }
         .tabs {
           width: 40%;
           background-color: #fff;
           padding: 0 5px;
-          margin-left: 250px;
+          margin-left: 265px;
         }
       }
     }

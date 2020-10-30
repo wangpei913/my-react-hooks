@@ -27,7 +27,7 @@ function Login(props) {
   };
 
   // ajax请求
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('生活明朗，万物可爱');
   useEffect(() => {
     getHitokoto().then(res => {
       if (res) {
@@ -38,8 +38,11 @@ function Login(props) {
   return (
     <div className="login-page">
       <aside className="left-aside">
-        <nav className="left-nav-up">{title}</nav>
         <nav className="left-nav-down">
+          <span className="text">
+            <i className="iconfont icon-shoucangshixin"></i>
+            {title}
+          </span>
           <Tabs defaultActiveKey="1" size="small" className="tabs">
             <TabPane tab="账户密码登录" key="1">
               <Form
