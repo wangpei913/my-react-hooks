@@ -5,47 +5,23 @@ const IndexPage = Loadable({
   loader: () => import("../page"),
   loading: Loading,
 });
-const JavaScrypt = Loadable({
-  loader: () => import("../page/js"),
-  loading: Loading,
-})
-const DataType = Loadable({
-  loader: () => import("../page/DataType"),
-  loading: Loading,
-})
-const CSS = Loadable({
-  loader: () => import("../page/css"),
-  loading: Loading,
-})
-const Vue = Loadable({
-  loader: () => import("../page/vue"),
-  loading: Loading,
-})
-const React = Loadable({
-  loader: () => import("../page/react"),
-  loading: Loading,
-})
-const WebPack = Loadable({
-  loader: () => import("../page/webpack"),
-  loading: Loading,
-})
-const Applets = Loadable({
-  loader: () => import("../page/xcx"),
-  loading: Loading,
-})
-const TypeScript = Loadable({
-  loader: () => import("../page/ts"),
-  loading: Loading,
-})
-const HTTP = Loadable({
-  loader: () => import("../page/http"),
-  loading: Loading,
-})
-const WriteCode = Loadable({
-  loader: () => import("../page/code"),
-  loading: Loading,
-})
 
+const Dashboard = Loadable({
+  loader: () => import("../page/dashboard"),
+  loading: Loading,
+});
+const Analysis = Loadable({
+  loader: () => import("../page/dashboard/analysis"),
+  loading: Loading,
+});
+const Monitor = Loadable({
+  loader: () => import("../page/dashboard/monitor"),
+  loading: Loading,
+});
+const Kind = Loadable({
+  loader: () => import("../page/kind"),
+  loading: Loading,
+});
 const NotFound = Loadable({
   loader: () => import("../page/notfound"),
   loading: Loading,
@@ -77,99 +53,57 @@ const PageRoute = [
   },
   {
     path: "/",
-    title: "首页",
+    title: "Dashboard",
     component: IndexPage,
     requiresAuth: false,
     routes: [
       {
         exact: true,
         from: "/",
-        to: "/javascript",
+        to: "/dashboard",
       },
       {
         path: "/404",
         redirect: "/404",
       },
       {
-        title: "JavaScrypt",
-        path: "/javascript",
-        component: JavaScrypt,
+        title: "Dashboard",
+        path: "/dashboard",
+        component: Dashboard,
         requiresAuth: false,
         key: "0",
         routes: [
           {
             exact: true,
-            from: "/javascript",
-            to: "/javascript/datatype",
+            from: "/dashboard",
+            to: "/dashboard/analysis",
           },
           {
             path: "/404",
             redirect: "/404",
           },
           {
-            title: "DataType",
-            path: "/javascript/datatype",
-            component: DataType,
+            title: "Analysis",
+            path: "/dashboard/analysis",
+            component: Analysis,
             requiresAuth: false,
             key: "0-1",
+          },
+          {
+            title: "Monitor",
+            path: "/dashboard/monitor",
+            component: Monitor,
+            requiresAuth: false,
+            key: "0-2",
           }
         ]
       },
       {
-        title: "CSS",
-        path: "/css",
-        component: CSS,
+        title: "Kind",
+        path: "/kind",
+        component: Kind,
         requiresAuth: true,
         key: "1",
-      },
-      {
-        title: "WebPack",
-        path: "/webpack",
-        component: WebPack,
-        requiresAuth: true,
-        key: "2",
-      },
-      {
-        title: "Vue",
-        path: "/vue",
-        component: Vue,
-        requiresAuth: true,
-        key: "3",
-      },
-      {
-        title: "React",
-        path: "/react",
-        component: React,
-        requiresAuth: true,
-        key: "4",
-      },
-      {
-        title: "小程序",
-        path: "/applets",
-        component: Applets,
-        requiresAuth: true,
-        key: "5",
-      },
-      {
-        title: "TypeScript",
-        path: "/tsp",
-        component: TypeScript,
-        requiresAuth: true,
-        key: "6",
-      },
-      {
-        title: "HTTP",
-        path: "/http",
-        component: HTTP,
-        requiresAuth: true,
-        key: "7",
-      },
-      {
-        title: "手写代码",
-        path: "/write",
-        component: WriteCode,
-        requiresAuth: true,
-        key: "8",
       },
       {
         title: "个人中心",

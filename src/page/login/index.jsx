@@ -4,9 +4,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 
-
-import { get } from '../../request'
-import '../../mock/prompt'
+import { getHitokoto } from '../../api';
 
 import Calendar from "../../components/calendar";
 
@@ -27,19 +25,13 @@ function Login(props) {
       message.warning("请输入 用户名: admin & 密码: hello~admin");
     }
   };
-  // 随机数据
-  const randomData = (arr) => {
-    if (!arr) return
-    let count = arr.length - 1;
-    let random = Math.ceil(Math.random() * count);
-    return arr[random]
-  }
+
   // ajax请求
-  const [title, setTitle] = useState('相信美好的事情即将发生');
+  const [title, setTitle] = useState('');
   useEffect(() => {
-    get('/prompt').then(({ code, data }) => {
-      if (code === 200) {
-        setTitle(randomData(data))
+    getHitokoto().then(res => {
+      if (res) {
+        setTitle(res.hitokoto)
       }
     })
   }, [])

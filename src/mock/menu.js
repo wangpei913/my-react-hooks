@@ -5,28 +5,28 @@ Mock.mock('/menu', {
     "message": 'OK',
     "data": [
         {
-            "path": "/home",
-            "title": "首页",
-            "key": "1",
-            "icon": "DashboardOutlined",
+            "path": "/dashboard",
+            "title": "图表",
+            "key": "0",
+            "icon": "\ue61b",
             "routes": [
                 {
                     "title": "分析页",
-                    "path": "/home/analysis",
-                    "key": "1-1",
+                    "path": "/dashboard/analysis",
+                    "key": "0-1",
                 },
                 {
                     "title": "监控页",
-                    "path": "/home/monitor",
-                    "key": "1-2",
+                    "path": "/dashboard/monitor",
+                    "key": "0-2",
                 },
             ],
         },
         {
             "title": "分类",
             "path": "/kind",
-            "key": "2",
-            "icon": "ProfileOutlined",
+            "key": "1",
+            "icon": "\ue601",
             "routes": [],
         },
     ]
