@@ -3,8 +3,6 @@ import { inject, observer } from "mobx-react";
 
 import { Button } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-
-import Search from "./search";
 import UserModules from "./userModules";
 
 const Header = ({ globalHeaderStore: { collapsed, toggleCollapsed } }) => {
@@ -16,8 +14,6 @@ const Header = ({ globalHeaderStore: { collapsed, toggleCollapsed } }) => {
         onClick={() => toggleCollapsed(!collapsed)}
       />
       <span className="toolbar">
-        <Search />
-        &nbsp; &nbsp;
         <UserModules />
       </span>
     </header>

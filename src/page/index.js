@@ -2,7 +2,7 @@ import React, { memo, useState, useRef, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import _ from "loadsh";
-import { VerticalAlignTopOutlined, EditOutlined } from "@ant-design/icons";
+import { VerticalAlignTopOutlined } from "@ant-design/icons";
 
 import renderRoutes from "../route";
 import SideMenu from "../components/sideMenu";
@@ -49,10 +49,6 @@ function AllComponents(props) {
               />
             </span>
           )}
-          <span className="top-span">
-            <EditOutlined />
-            <div className="label">用户反馈</div>
-          </span>
         </div>
       </main>
     </div>

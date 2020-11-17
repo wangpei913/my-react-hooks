@@ -14,7 +14,6 @@ const AppContainer = styled.div`
 
 function App(props) {
   const { globalTheme: { themeType } } = props;
-  console.log(themeType, 'the')
   const authed = false;
   const authPath = "/login";
   return (
