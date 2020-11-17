@@ -39,6 +39,7 @@ function AllComponents(props) {
         <main className="main-content" ref={scrollEle}>
           {renderRoutes(routes, authed, authPath)}
         </main>
+        <footer className="copyrights">Copyright@{`${new Date().getFullYear()}`}&nbsp;&nbsp;&nbsp;好玩的效果，好玩的动态</footer>
         <div className="utils-box">
           {isScroll && (
             <span className="top-span line-height">

@@ -1,0 +1,32 @@
+.card-dom{
+    .ant-card-body{
+        display: flex;
+        flex-direction: column;
+        padding: 5px 12px;
+        .card-header{
+            display: flex;
+            height: 35px;
+            align-items: center;
+            justify-content: space-between;
+            color: rgba(0,0,0,.45);
+            i{
+                cursor: pointer;
+            }
+        }
+        .card-main{
+            flex: 1;
+            // height: 80px;
+            min-height: 80px;
+        }
+        .card-footer{
+            display: flex;
+            height: 35px;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            i{
+                padding: 0 5px;
+                font-size: 14px;
+            }
+        }
+    }
+}

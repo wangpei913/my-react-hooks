@@ -1,18 +1,18 @@
 @import "./assets/style/reset.scss";
-@import "./assets/style/element.scss";
 @import "./assets/style/variable.scss";
 @import "./assets/style/layout.scss";
 @import "./assets/style/login.scss";
 @import "./assets/style/drag.scss";
 @import "./assets//style/center.scss";
 @import "./assets/style/datatype.scss";
-@import "./assets/style/anchor.scss";
 
 html,
 body,
 #root {
   width: 100%;
   height: 100%;
+  background-color: #fff;
+  transition: all 300ms;
 }
 
 /*chrome--------------------------------------------start*/

@@ -6,7 +6,7 @@ import { UserOutlined } from "@ant-design/icons";
 
 const UserModules = (props) => {
   const {
-    globalLogin: { username, logout },
+    globalLogin: { authed, username, logout },
     history,
   } = props;
 
@@ -27,7 +27,7 @@ const UserModules = (props) => {
     <Menu onClick={clickMenuItem}>
       <Menu.Item key="center">个人中心</Menu.Item>
       <Menu.Item key="set">个人设置</Menu.Item>
-      <Menu.Item key="out">退出登录</Menu.Item>
+      <Menu.Item key="out">{authed ? '退出登录' : '去登录'}</Menu.Item>
     </Menu>
   );
   return (
