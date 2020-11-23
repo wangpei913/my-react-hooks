@@ -1,6 +1,9 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { message } from 'antd'
+import { CSSTransition } from 'react-transition-group'
+import '../assets/style/router.scss';
+
 const renderRoutes = (
   routes,
   authed = false,
@@ -51,12 +54,20 @@ const renderRoutes = (
                     route.path === authPath
                   ) {
                     return (
-                      <route.component
-                        beforeEnter={route.beforeEnter}
-                        {...props}
-                        {...extraProps}
-                        route={route}
-                      />
+                      <CSSTransition
+                        in={true}
+                        classNames="card"
+                        timeout={400}
+                        unmountOnExit
+                        appear={true}
+                      >
+                        <route.component
+                          beforeEnter={route.beforeEnter}
+                          {...props}
+                          {...extraProps}
+                          route={route}
+                        />
+                      </CSSTransition>
                     );
                   }
                   message.error('你还没登录!')

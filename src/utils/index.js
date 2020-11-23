@@ -37,3 +37,13 @@ export function useThrottle(fn, delay) {
     }
     return f;
 }
+
+/**
+ * 扁平化数组
+ */
+export function flatten(arr) {
+    if (!arr) return []
+    return arr.reduce((result, item) => {
+        return result.concat(Array.isArray(item) ? flatten(item) : item);
+    }, []);
+}

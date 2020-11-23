@@ -9,7 +9,7 @@ function NotFound(props) {
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={
-        <Button type="primary" onClick={() => props.history.push("/home")}>
+        <Button type="primary" onClick={() => props.history.push("/")}>
           Back Home
         </Button>
       }

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 
 function NewDate() {
     // 当前日期
@@ -64,9 +64,23 @@ function NewDate() {
     // 当前active的日期
     let activeDay = date.getDate();
 
+    // 生成系统时间
+    const [currentDate, setDate] = useState(new Date())
+
+    useEffect(() => {
+        function tick() {
+            setDate(new Date());
+        }
+        const timerID = setInterval(tick, 1000);
+
+        return function clearTick() {
+            clearInterval(timerID);
+        };
+    });
+
     return (
         <div className="date-box">
-            <header className="current">{`${year}年${month > 9 ? month : '0' + month}月${activeDay > 9 ? activeDay : '0' + activeDay}日`}</header>
+            <header className="current">{`${year}年${month > 9 ? month : '0' + month}月${activeDay > 9 ? activeDay : '0' + activeDay}日 ${currentDate.toLocaleTimeString()}`}</header>
             <ul className="weeks-day">
                 <li>一</li>
                 <li>二</li>

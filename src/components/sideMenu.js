@@ -9,12 +9,9 @@ const { SubMenu } = Menu;
 function SideMenu(props) {
   const {
     globalHeaderStore: { collapsed },
-    // location: { pathname },
-    globalTheme: { themeType }
+    globalTheme: { themeType },
+    location: { pathname }
   } = props;
-  // let routerDatepath = RouteConfig[0].routes.filter(
-  //   (item) => item.path !== "/"
-  // );
   const renderMenu = (data) => {
     return data.map((item) => {
       if (item.routes && item.routes.length > 0) {
@@ -22,6 +19,7 @@ function SideMenu(props) {
           <SubMenu
             title={item.title}
             key={item.key}
+            style={{ color: pathname.includes(item.path) && '#1890ff' }}
             icon={<span className="anticon"><i className="iconfont" style={{ fontSize: 20, margin: '0 5px' }}>{item.icon}</i></span>}
           >
             {renderMenu(item.routes)}
@@ -32,6 +30,7 @@ function SideMenu(props) {
         <Menu.Item
           key={item.key}
           icon={<span className="anticon"><i className="iconfont" style={{ fontSize: 20, margin: '0 5px' }}>{item.icon}</i></span>}
+          className={pathname === item.path ? 'ant-menu-item-selected' : ''}
         >
           <NavLink key={item.title} to={item.path}>
             {item.title}
@@ -50,16 +49,19 @@ function SideMenu(props) {
   }, [])
 
   return (
-    <Menu
-      mode="inline"
-      theme={themeType}
-      defaultSelectedKeys={['0', '0-1']}
-      defaultOpenKeys={['0', '0-1']}
-      inlineCollapsed={collapsed}
-      style={{ width: collapsed ? "80px" : "200px" }}
-    >
-      {renderMenu(menu)}
-    </Menu>
+    <>
+      {
+        menu && <Menu
+          mode="inline"
+          theme={themeType}
+          defaultOpenKeys={['0']}
+          inlineCollapsed={collapsed}
+          style={{ width: collapsed ? "80px" : "200px" }}
+        >
+          {renderMenu(menu)}
+        </Menu>
+      }
+    </>
   );
 }
 export default inject("globalHeaderStore", "globalTheme")(withRouter(observer(SideMenu)));
