@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import _ from "loadsh";
 import { VerticalAlignTopOutlined } from "@ant-design/icons";
+import DynamicAntdTheme from 'dynamic-antd-theme';
 
 import renderRoutes from "../route";
 import SideMenu from "../components/sideMenu";
@@ -18,16 +19,13 @@ function AllComponents(props) {
   const [isScroll, setScroll] = useState(false);
   useEffect(() => {
     const handleScroll = (e) => {
-      if (e.target.scrollTop > 300) {
+      if (e.target.scrollTop > 100) {
         setScroll(true);
-      } else if (e.target.scrollTop < 300) {
+      } else if (e.target.scrollTop < 100) {
         setScroll(false);
       }
     };
     scrollEle.current.addEventListener("scroll", _.throttle(handleScroll, 300));
-    return () => {
-      // scrollEle.current.removeEventListener("scroll", handleScroll);
-    };
   }, []);
   return (
     <div className="horizontal-layout">
@@ -39,7 +37,10 @@ function AllComponents(props) {
         <main className="main-content" ref={scrollEle}>
           {renderRoutes(routes, authed, authPath)}
         </main>
-        <footer className="copyrights">Copyright@{`${new Date().getFullYear()}`}&nbsp;&nbsp;&nbsp;好玩的效果，好玩的动态</footer>
+        <footer className="copyrights">
+          <span className="colorBtn"><DynamicAntdTheme placement="top" /></span>
+          Copyright@{`${new Date().getFullYear()}`}&nbsp;&nbsp;&nbsp;好玩的效果，好玩的动态
+        </footer>
         <div className="utils-box">
           {isScroll && (
             <span className="top-span line-height">

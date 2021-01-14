@@ -1,6 +1,10 @@
 import React from 'react'
 
 function Kind() {
-    return <div>我是分类页面</div>
+    return (
+        <div className="kind-pages">
+            我是kind
+        </div>
+    )
 }
 export default Kind;

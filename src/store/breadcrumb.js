@@ -2,14 +2,11 @@ import { observable, action } from "mobx";
 
 class GlobalBreadCrumb {
   @observable
-  params = {
-    locationPath: "",
-    onMatchedRoutes: () => {},
-  };
+  pathList = [{ title: '首页', path: '/' }];
   @action
-  setParams = (data) => {
-    this.params = { ...data };
-  };
+  setPathList = (data) => {
+    this.pathList = data;
+  }
 }
 
 export default GlobalBreadCrumb;

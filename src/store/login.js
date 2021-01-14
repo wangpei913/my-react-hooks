@@ -4,6 +4,7 @@ class LoginStore {
   @observable
   authed = window.sessionStorage.getItem("authed") || false;
   username = window.sessionStorage.getItem("user") || "未登录";
+  isInfo = false;
   @action
   changeAuthed = ({ authed, username }) => {
     window.sessionStorage.setItem("authed", authed);

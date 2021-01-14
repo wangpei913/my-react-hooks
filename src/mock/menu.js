@@ -28,6 +28,6 @@ Mock.mock('/menu', {
             "key": "1",
             "icon": "\ue601",
             "routes": [],
-        },
+        }
     ]
 })

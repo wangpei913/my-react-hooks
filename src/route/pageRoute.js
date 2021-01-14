@@ -43,6 +43,7 @@ const PageRoute = [
     requiresAuth: false,
     routes: [],
     title: "404",
+    parentId: -1
   },
   {
     path: "/login",
@@ -50,12 +51,14 @@ const PageRoute = [
     component: Login,
     requiresAuth: false,
     routes: [],
+    parentId: 0
   },
   {
     path: "/",
     title: "Dashboard",
     component: IndexPage,
     requiresAuth: false,
+    parentId: 1,
     routes: [
       {
         exact: true,
@@ -71,6 +74,7 @@ const PageRoute = [
         path: "/dashboard",
         component: Dashboard,
         requiresAuth: false,
+        parentId: 1.1,
         key: "0",
         routes: [
           {
@@ -83,14 +87,14 @@ const PageRoute = [
             redirect: "/404",
           },
           {
-            title: "Analysis",
+            title: "分析页",
             path: "/dashboard/analysis",
             component: Analysis,
             requiresAuth: false,
             key: "0-1",
           },
           {
-            title: "Monitor",
+            title: "监控页",
             path: "/dashboard/monitor",
             component: Monitor,
             requiresAuth: false,
@@ -104,6 +108,7 @@ const PageRoute = [
         component: Kind,
         requiresAuth: true,
         key: "1",
+        parentId: 1.2,
       },
       {
         title: "个人中心",
@@ -111,6 +116,7 @@ const PageRoute = [
         component: UserCenter,
         requiresAuth: true,
         key: "3",
+        parentId: 1.4,
       },
     ],
   },

@@ -1,34 +1,22 @@
 import React from "react";
-import { matchRoutes } from "react-router-config";
-import RouteConfig from "../route/router";
+import { Breadcrumb } from 'antd';
+import { NavLink } from 'react-router-dom';
 
-const Breadcrumb = ({ locationPath, onMatchedRoutes }) => {
-  let matchedRoutes = matchRoutes(RouteConfig, locationPath);
-  if (typeof onMatchedRoutes === "function") {
-    matchedRoutes = onMatchedRoutes(matchedRoutes);
-  }
+const BreadcrumbCom = ({ pathList = [] }) => {
+  console.log(window.location, 'window')
   return (
-    <nav>
-      <ul className="breadcrumb">
-        {matchedRoutes.map((matchRoute, i) => {
-          const { path, title } = matchRoute.route;
-          const isActive = path === locationPath;
-          return isActive ? (
-            <li key={i} className="breadcrumb-item active">
-              {matchedRoutes.length > 2 && (
-                <i style={{ padding: "0 8px" }}>/</i>
-              )}
-              {title}
-            </li>
-          ) : (
-            <li key={i} className="breadcrumb-item">
-              {title}
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
+    <Breadcrumb>
+      {
+        pathList.map((item, index) => {
+          return (
+            <Breadcrumb.Item key={item.path}>
+              {index === 0 ? <NavLink to={pathList[0].path}>{item.title}</NavLink> : <span>{item.title}</span>}
+            </Breadcrumb.Item>
+          )
+        })
+      }
+    </Breadcrumb>
+  )
 };
 
-export default Breadcrumb;
+export default BreadcrumbCom;

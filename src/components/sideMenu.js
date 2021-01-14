@@ -10,7 +10,6 @@ function SideMenu(props) {
   const {
     globalHeaderStore: { collapsed },
     globalTheme: { themeType },
-    location: { pathname }
   } = props;
   const renderMenu = (data) => {
     return data.map((item) => {
@@ -19,7 +18,6 @@ function SideMenu(props) {
           <SubMenu
             title={item.title}
             key={item.key}
-            style={{ color: pathname.includes(item.path) && '#1890ff' }}
             icon={<span className="anticon"><i className="iconfont" style={{ fontSize: 20, margin: '0 5px' }}>{item.icon}</i></span>}
           >
             {renderMenu(item.routes)}
@@ -30,7 +28,6 @@ function SideMenu(props) {
         <Menu.Item
           key={item.key}
           icon={<span className="anticon"><i className="iconfont" style={{ fontSize: 20, margin: '0 5px' }}>{item.icon}</i></span>}
-          className={pathname === item.path ? 'ant-menu-item-selected' : ''}
         >
           <NavLink key={item.title} to={item.path}>
             {item.title}
@@ -41,6 +38,7 @@ function SideMenu(props) {
   };
 
   const [menu, setMenu] = useState([])
+  const [current, setCurrent] = useState('0-1')
 
   useEffect(() => {
     getMenu().then(res => {
@@ -55,7 +53,9 @@ function SideMenu(props) {
           mode="inline"
           theme={themeType}
           defaultOpenKeys={['0']}
+          selectedKeys={[current]}
           inlineCollapsed={collapsed}
+          onClick={(e) => setCurrent(e.key)}
           style={{ width: collapsed ? "80px" : "200px" }}
         >
           {renderMenu(menu)}

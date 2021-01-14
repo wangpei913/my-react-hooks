@@ -53,22 +53,21 @@ const renderRoutes = (
                   ) {
                     return (
                       <route.component
-                        beforeEnter={route.beforeEnter}
                         {...props}
                         {...extraProps}
                         route={route}
                       />
                     );
+                  } else {
+                    message.error('你还没登录!')
+                    return (
+                      < Redirect
+                        to={{
+                          pathname: authPath,
+                        }}
+                      />
+                    );
                   }
-                  message.error('你还没登录!')
-                  return (
-                    < Redirect
-                      to={{
-                        pathname: authPath,
-                        state: { from: props.location },
-                      }}
-                    />
-                  );
                 }}
               />
             );

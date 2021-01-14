@@ -120,9 +120,19 @@
   transition: all 0.2s;
 }
 .copyrights{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #f0f2f5;
   text-align: center;
   padding: 10px 0;
+  line-height: 30px;
+  .colorBtn{
+    >div{
+      margin-top: 15px;
+      margin-right: 10px;
+    }
+  }
 }
 
 .breadcrumb {
