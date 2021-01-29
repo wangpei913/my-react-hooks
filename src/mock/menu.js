@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 
-Mock.mock('/menu', {
+Mock.mock('/api/menu', {
     "code": 200,
     "message": 'OK',
     "data": [

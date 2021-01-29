@@ -9,7 +9,7 @@ export function formatterRMB(rmb) {
 }
 
 /**
- * 节流
+ * 防抖
  */
 export function useDebounce(fn, delay) {
     const { current } = React.useRef({});
@@ -17,13 +17,13 @@ export function useDebounce(fn, delay) {
         if (current.timer) {
             clearTimeout(current.timer);
         }
-        current.timer = setTimeout(fn.bind(undefined, ...args), delay);
+        current.timer = setTimeout(fn.call(null, ...args), delay);
     }
     return f;
 }
 
 /**
- * 防抖
+ * 节流
  */
 export function useThrottle(fn, delay) {
     const { current } = React.useRef({});

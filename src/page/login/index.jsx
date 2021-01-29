@@ -29,9 +29,9 @@ function Login(props) {
   // ajax请求
   const [title, setTitle] = useState('生活明朗，万物可爱');
   useEffect(() => {
-    getHitokoto().then(res => {
-      if (res) {
-        setTitle(res.hitokoto)
+    getHitokoto().then(({ data }) => {
+      if (data && data.length > 0) {
+        setTitle(data.hitokoto)
       }
     })
   }, [])

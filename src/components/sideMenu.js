@@ -9,6 +9,7 @@ const { SubMenu } = Menu;
 function SideMenu(props) {
   const {
     globalHeaderStore: { collapsed },
+    location: { pathname },
     globalTheme: { themeType },
   } = props;
   const renderMenu = (data) => {
@@ -38,14 +39,23 @@ function SideMenu(props) {
   };
 
   const [menu, setMenu] = useState([])
-  const [current, setCurrent] = useState('0-1')
-
+  const [current, setCurrent] = useState('');
   useEffect(() => {
     getMenu().then(res => {
-      setMenu(res.data)
+      setMenu(res.data.data)
+      const findkey = (data) => {
+        data.forEach(item => {
+          if (item.routes && item.routes.length > 0) {
+            findkey(item.routes)
+          }
+          if (item.path === pathname) {
+            setCurrent(item.key)
+          }
+        })
+      }
+      findkey(res.data.data)
     })
-  }, [])
-
+  }, [pathname]);
   return (
     <>
       {

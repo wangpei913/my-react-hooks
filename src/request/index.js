@@ -3,7 +3,7 @@ import { message } from 'antd'
 
 const instance = axios.create({    //创建axios实例，在这里可以设置请求的默认配置
     timeout: 10000, // 设置超时时间10s
-    baseURL: '/'   //根据自己配置的反向代理去设置不同环境的baeUrl
+    baseURL: '/api'   //根据自己配置的反向代理去设置不同环境的baeUrl
 })
 // 文档中的统一设置post请求头。下面会说到post请求的几种'Content-Type'
 instance.defaults.headers.post['Content-Type'] = 'application/json'
@@ -41,7 +41,7 @@ instance.interceptors.response.use(response => {
     if (response.statusText === 'OK') {     // 响应结果里的statusText: ok是我与后台的约定，大家可以根据实际情况去做对应的判断
         return Promise.resolve(response.data)
     } else {
-        message.error('响应超时')
+        // message.error('响应超时')
         return Promise.reject(response.data.message)
     }
 }, error => {
@@ -69,8 +69,10 @@ export const get = (url, params = {}, config = {}) => {
             params,
             ...config
         }).then(response => {
+            console.log(response)
             resolve(response)
         }).catch(error => {
+            console.log('11111')
             reject(error)
         })
     })

@@ -30,12 +30,16 @@ const UserModules = (props) => {
     </Menu>
   );
   return (
-    <Dropdown overlay={menu} className="dropdown-box">
-      <span>
-        <Avatar shape="square" size="small" icon={<UserOutlined />} />
-        <label className="label font-12">{username}</label>
-      </span>
-    </Dropdown>
+    <>
+      {
+        username === '未登录' ? <a href=" " className="label font-12" onClick={() => clickMenuItem({ key: 'out' })}>去登录</a> : <Dropdown overlay={menu} className="dropdown-box">
+          <span>
+            <Avatar shape="square" size="small" icon={<UserOutlined />} />
+            <label className="label font-12">{username}</label>
+          </span>
+        </Dropdown>
+      }
+    </>
   );
 };
 export default inject("globalLogin")(observer(withRouter(UserModules)));

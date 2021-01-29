@@ -20,7 +20,7 @@ class GlobalHeaderStore {
     getMenu().then(res => {
       this.menus = res.data;
     })
-  }
+  };
 }
 
 export default GlobalHeaderStore;
